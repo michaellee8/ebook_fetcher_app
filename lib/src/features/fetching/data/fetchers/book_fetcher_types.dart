@@ -24,6 +24,7 @@ class BookMetadata with _$BookMetadata {
 class ChapterMetadata with _$ChapterMetadata {
   const factory ChapterMetadata({
     required String title,
+    required int chapterSeqNum,
     required int chapterNum,
     required Uri url,
   }) = _ChapterMetadata;
@@ -36,7 +37,7 @@ class ChapterMetadata with _$ChapterMetadata {
 class Chapter with _$Chapter {
   const factory Chapter({
     required ChapterMetadata metadata,
-    @StringBuiltListJsonConverter() required BuiltList<String> paragraphs,
+    required String htmlContent,
   }) = _Chapter;
 
   factory Chapter.fromJson(Map<String, Object?> json) =>

@@ -25,6 +25,7 @@ Map<String, dynamic> _$$_BookMetadataToJson(_$_BookMetadata instance) =>
 _$_ChapterMetadata _$$_ChapterMetadataFromJson(Map<String, dynamic> json) =>
     _$_ChapterMetadata(
       title: json['title'] as String,
+      chapterSeqNum: json['chapterSeqNum'] as int,
       chapterNum: json['chapterNum'] as int,
       url: Uri.parse(json['url'] as String),
     );
@@ -32,6 +33,7 @@ _$_ChapterMetadata _$$_ChapterMetadataFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_ChapterMetadataToJson(_$_ChapterMetadata instance) =>
     <String, dynamic>{
       'title': instance.title,
+      'chapterSeqNum': instance.chapterSeqNum,
       'chapterNum': instance.chapterNum,
       'url': instance.url.toString(),
     };
@@ -39,13 +41,11 @@ Map<String, dynamic> _$$_ChapterMetadataToJson(_$_ChapterMetadata instance) =>
 _$_Chapter _$$_ChapterFromJson(Map<String, dynamic> json) => _$_Chapter(
       metadata:
           ChapterMetadata.fromJson(json['metadata'] as Map<String, dynamic>),
-      paragraphs: const StringBuiltListJsonConverter()
-          .fromJson(json['paragraphs'] as List),
+      htmlContent: json['htmlContent'] as String,
     );
 
 Map<String, dynamic> _$$_ChapterToJson(_$_Chapter instance) =>
     <String, dynamic>{
       'metadata': instance.metadata,
-      'paragraphs':
-          const StringBuiltListJsonConverter().toJson(instance.paragraphs),
+      'htmlContent': instance.htmlContent,
     };

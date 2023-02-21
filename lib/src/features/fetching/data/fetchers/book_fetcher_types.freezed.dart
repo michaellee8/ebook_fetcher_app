@@ -227,6 +227,7 @@ ChapterMetadata _$ChapterMetadataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ChapterMetadata {
   String get title => throw _privateConstructorUsedError;
+  int get chapterSeqNum => throw _privateConstructorUsedError;
   int get chapterNum => throw _privateConstructorUsedError;
   Uri get url => throw _privateConstructorUsedError;
 
@@ -242,7 +243,7 @@ abstract class $ChapterMetadataCopyWith<$Res> {
           ChapterMetadata value, $Res Function(ChapterMetadata) then) =
       _$ChapterMetadataCopyWithImpl<$Res, ChapterMetadata>;
   @useResult
-  $Res call({String title, int chapterNum, Uri url});
+  $Res call({String title, int chapterSeqNum, int chapterNum, Uri url});
 }
 
 /// @nodoc
@@ -259,6 +260,7 @@ class _$ChapterMetadataCopyWithImpl<$Res, $Val extends ChapterMetadata>
   @override
   $Res call({
     Object? title = null,
+    Object? chapterSeqNum = null,
     Object? chapterNum = null,
     Object? url = null,
   }) {
@@ -267,6 +269,10 @@ class _$ChapterMetadataCopyWithImpl<$Res, $Val extends ChapterMetadata>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      chapterSeqNum: null == chapterSeqNum
+          ? _value.chapterSeqNum
+          : chapterSeqNum // ignore: cast_nullable_to_non_nullable
+              as int,
       chapterNum: null == chapterNum
           ? _value.chapterNum
           : chapterNum // ignore: cast_nullable_to_non_nullable
@@ -287,7 +293,7 @@ abstract class _$$_ChapterMetadataCopyWith<$Res>
       __$$_ChapterMetadataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, int chapterNum, Uri url});
+  $Res call({String title, int chapterSeqNum, int chapterNum, Uri url});
 }
 
 /// @nodoc
@@ -302,6 +308,7 @@ class __$$_ChapterMetadataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
+    Object? chapterSeqNum = null,
     Object? chapterNum = null,
     Object? url = null,
   }) {
@@ -310,6 +317,10 @@ class __$$_ChapterMetadataCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      chapterSeqNum: null == chapterSeqNum
+          ? _value.chapterSeqNum
+          : chapterSeqNum // ignore: cast_nullable_to_non_nullable
+              as int,
       chapterNum: null == chapterNum
           ? _value.chapterNum
           : chapterNum // ignore: cast_nullable_to_non_nullable
@@ -328,7 +339,10 @@ class _$_ChapterMetadata
     with DiagnosticableTreeMixin
     implements _ChapterMetadata {
   const _$_ChapterMetadata(
-      {required this.title, required this.chapterNum, required this.url});
+      {required this.title,
+      required this.chapterSeqNum,
+      required this.chapterNum,
+      required this.url});
 
   factory _$_ChapterMetadata.fromJson(Map<String, dynamic> json) =>
       _$$_ChapterMetadataFromJson(json);
@@ -336,13 +350,15 @@ class _$_ChapterMetadata
   @override
   final String title;
   @override
+  final int chapterSeqNum;
+  @override
   final int chapterNum;
   @override
   final Uri url;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChapterMetadata(title: $title, chapterNum: $chapterNum, url: $url)';
+    return 'ChapterMetadata(title: $title, chapterSeqNum: $chapterSeqNum, chapterNum: $chapterNum, url: $url)';
   }
 
   @override
@@ -351,6 +367,7 @@ class _$_ChapterMetadata
     properties
       ..add(DiagnosticsProperty('type', 'ChapterMetadata'))
       ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('chapterSeqNum', chapterSeqNum))
       ..add(DiagnosticsProperty('chapterNum', chapterNum))
       ..add(DiagnosticsProperty('url', url));
   }
@@ -361,6 +378,8 @@ class _$_ChapterMetadata
         (other.runtimeType == runtimeType &&
             other is _$_ChapterMetadata &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.chapterSeqNum, chapterSeqNum) ||
+                other.chapterSeqNum == chapterSeqNum) &&
             (identical(other.chapterNum, chapterNum) ||
                 other.chapterNum == chapterNum) &&
             (identical(other.url, url) || other.url == url));
@@ -368,7 +387,8 @@ class _$_ChapterMetadata
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, chapterNum, url);
+  int get hashCode =>
+      Object.hash(runtimeType, title, chapterSeqNum, chapterNum, url);
 
   @JsonKey(ignore: true)
   @override
@@ -387,6 +407,7 @@ class _$_ChapterMetadata
 abstract class _ChapterMetadata implements ChapterMetadata {
   const factory _ChapterMetadata(
       {required final String title,
+      required final int chapterSeqNum,
       required final int chapterNum,
       required final Uri url}) = _$_ChapterMetadata;
 
@@ -395,6 +416,8 @@ abstract class _ChapterMetadata implements ChapterMetadata {
 
   @override
   String get title;
+  @override
+  int get chapterSeqNum;
   @override
   int get chapterNum;
   @override
@@ -412,8 +435,7 @@ Chapter _$ChapterFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Chapter {
   ChapterMetadata get metadata => throw _privateConstructorUsedError;
-  @StringBuiltListJsonConverter()
-  BuiltList<String> get paragraphs => throw _privateConstructorUsedError;
+  String get htmlContent => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -425,9 +447,7 @@ abstract class $ChapterCopyWith<$Res> {
   factory $ChapterCopyWith(Chapter value, $Res Function(Chapter) then) =
       _$ChapterCopyWithImpl<$Res, Chapter>;
   @useResult
-  $Res call(
-      {ChapterMetadata metadata,
-      @StringBuiltListJsonConverter() BuiltList<String> paragraphs});
+  $Res call({ChapterMetadata metadata, String htmlContent});
 
   $ChapterMetadataCopyWith<$Res> get metadata;
 }
@@ -446,17 +466,17 @@ class _$ChapterCopyWithImpl<$Res, $Val extends Chapter>
   @override
   $Res call({
     Object? metadata = null,
-    Object? paragraphs = null,
+    Object? htmlContent = null,
   }) {
     return _then(_value.copyWith(
       metadata: null == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
               as ChapterMetadata,
-      paragraphs: null == paragraphs
-          ? _value.paragraphs
-          : paragraphs // ignore: cast_nullable_to_non_nullable
-              as BuiltList<String>,
+      htmlContent: null == htmlContent
+          ? _value.htmlContent
+          : htmlContent // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -476,9 +496,7 @@ abstract class _$$_ChapterCopyWith<$Res> implements $ChapterCopyWith<$Res> {
       __$$_ChapterCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {ChapterMetadata metadata,
-      @StringBuiltListJsonConverter() BuiltList<String> paragraphs});
+  $Res call({ChapterMetadata metadata, String htmlContent});
 
   @override
   $ChapterMetadataCopyWith<$Res> get metadata;
@@ -495,17 +513,17 @@ class __$$_ChapterCopyWithImpl<$Res>
   @override
   $Res call({
     Object? metadata = null,
-    Object? paragraphs = null,
+    Object? htmlContent = null,
   }) {
     return _then(_$_Chapter(
       metadata: null == metadata
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
               as ChapterMetadata,
-      paragraphs: null == paragraphs
-          ? _value.paragraphs
-          : paragraphs // ignore: cast_nullable_to_non_nullable
-              as BuiltList<String>,
+      htmlContent: null == htmlContent
+          ? _value.htmlContent
+          : htmlContent // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -513,9 +531,7 @@ class __$$_ChapterCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Chapter with DiagnosticableTreeMixin implements _Chapter {
-  const _$_Chapter(
-      {required this.metadata,
-      @StringBuiltListJsonConverter() required this.paragraphs});
+  const _$_Chapter({required this.metadata, required this.htmlContent});
 
   factory _$_Chapter.fromJson(Map<String, dynamic> json) =>
       _$$_ChapterFromJson(json);
@@ -523,12 +539,11 @@ class _$_Chapter with DiagnosticableTreeMixin implements _Chapter {
   @override
   final ChapterMetadata metadata;
   @override
-  @StringBuiltListJsonConverter()
-  final BuiltList<String> paragraphs;
+  final String htmlContent;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Chapter(metadata: $metadata, paragraphs: $paragraphs)';
+    return 'Chapter(metadata: $metadata, htmlContent: $htmlContent)';
   }
 
   @override
@@ -537,7 +552,7 @@ class _$_Chapter with DiagnosticableTreeMixin implements _Chapter {
     properties
       ..add(DiagnosticsProperty('type', 'Chapter'))
       ..add(DiagnosticsProperty('metadata', metadata))
-      ..add(DiagnosticsProperty('paragraphs', paragraphs));
+      ..add(DiagnosticsProperty('htmlContent', htmlContent));
   }
 
   @override
@@ -547,14 +562,13 @@ class _$_Chapter with DiagnosticableTreeMixin implements _Chapter {
             other is _$_Chapter &&
             (identical(other.metadata, metadata) ||
                 other.metadata == metadata) &&
-            const DeepCollectionEquality()
-                .equals(other.paragraphs, paragraphs));
+            (identical(other.htmlContent, htmlContent) ||
+                other.htmlContent == htmlContent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, metadata, const DeepCollectionEquality().hash(paragraphs));
+  int get hashCode => Object.hash(runtimeType, metadata, htmlContent);
 
   @JsonKey(ignore: true)
   @override
@@ -573,16 +587,14 @@ class _$_Chapter with DiagnosticableTreeMixin implements _Chapter {
 abstract class _Chapter implements Chapter {
   const factory _Chapter(
       {required final ChapterMetadata metadata,
-      @StringBuiltListJsonConverter()
-          required final BuiltList<String> paragraphs}) = _$_Chapter;
+      required final String htmlContent}) = _$_Chapter;
 
   factory _Chapter.fromJson(Map<String, dynamic> json) = _$_Chapter.fromJson;
 
   @override
   ChapterMetadata get metadata;
   @override
-  @StringBuiltListJsonConverter()
-  BuiltList<String> get paragraphs;
+  String get htmlContent;
   @override
   @JsonKey(ignore: true)
   _$$_ChapterCopyWith<_$_Chapter> get copyWith =>

@@ -43,7 +43,7 @@ class HttpStatusException implements HttpException {
   final Uri uri;
 
   @override
-  String get message => "http error status $statusCode in $method $uri";
+  String get message => 'http error status $statusCode in $method $uri';
 }
 
 extension HttpResponseIsOk on http.Response {
