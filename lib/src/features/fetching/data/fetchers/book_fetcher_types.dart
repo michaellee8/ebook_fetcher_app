@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:built_collection/built_collection.dart';
-import '../../../../utils/built_collection_json_converters.dart';
 
 part 'book_fetcher_types.freezed.dart';
 
