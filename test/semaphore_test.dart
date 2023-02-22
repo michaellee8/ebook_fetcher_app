@@ -19,17 +19,17 @@ void main() {
     }
 
     test('when n < size', () async {
-      await testSemaphore(2, 3, const Duration(milliseconds: 500),
+      await testSemaphore(2, 3, const Duration(milliseconds: 1000),
           const Duration(milliseconds: 1500));
     });
 
     test('when n == size', () async {
-      await testSemaphore(3, 3, const Duration(milliseconds: 500),
+      await testSemaphore(3, 3, const Duration(milliseconds: 1000),
           const Duration(milliseconds: 1500));
     });
 
     test('when n > size', () async {
-      await testSemaphore(4, 3, const Duration(milliseconds: 1500),
+      await testSemaphore(4, 3, const Duration(milliseconds: 2000),
           const Duration(milliseconds: 2500));
     });
   });
