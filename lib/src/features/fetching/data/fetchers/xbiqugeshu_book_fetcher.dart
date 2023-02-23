@@ -3,7 +3,7 @@ import 'package:built_collection/built_collection.dart';
 import '../../../../utils/app_http_client.dart';
 import 'book_fetcher.dart';
 import 'book_fetcher_types.dart';
-import 'package:html/parser.dart' show parse, Anch;
+import 'package:html/parser.dart' show parse;
 import '../../../../utils/fast_gbk/fast_gbk.dart' show gbk;
 
 /// Provides book fetching for www.xbiqugeshu.com.

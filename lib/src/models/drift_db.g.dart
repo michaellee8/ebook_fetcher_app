@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'drift_schema.dart';
+part of 'drift_db.dart';
 
 // ignore_for_file: type=lint
 class $BooksTable extends Books with TableInfo<$BooksTable, Book> {
@@ -26,7 +26,9 @@ class $BooksTable extends Books with TableInfo<$BooksTable, Book> {
   @override
   late final GeneratedColumn<String> url = GeneratedColumn<String>(
       'url', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
   static const VerificationMeta _lastChapterMeta =
       const VerificationMeta('lastChapter');
   @override
@@ -344,7 +346,10 @@ class $ChaptersTable extends Chapters with TableInfo<$ChaptersTable, Chapter> {
   @override
   late final GeneratedColumn<int> book = GeneratedColumn<int>(
       'book', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+      type: DriftSqlType.int,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES books (id)'));
   @override
   List<GeneratedColumn> get $columns =>
       [id, title, url, chapterSeqNum, chapterNum, htmlContent, fetchedAt, book];
@@ -702,3 +707,23 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [books, chapters];
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$appDatabaseHash() => r'68c9ad772c198d1a34d2dcccc0a6a35f43092fd5';
+
+/// See also [appDatabase].
+@ProviderFor(appDatabase)
+final appDatabaseProvider = AutoDisposeProvider<AppDatabase>.internal(
+  appDatabase,
+  name: r'appDatabaseProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$appDatabaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef AppDatabaseRef = AutoDisposeProviderRef<AppDatabase>;
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

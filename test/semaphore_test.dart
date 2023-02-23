@@ -1,6 +1,5 @@
 import 'package:ebook_fetcher_app/src/utils/semaphore.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:matcher/matcher.dart';
 
 void main() {
   group('Semaphore limits parallel execution', () {

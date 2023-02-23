@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names, unnecessary_overrides
+
 import 'dart:convert';
 import 'dart:typed_data';
 import 'gbk_encoder_map.dart';
@@ -20,7 +22,7 @@ const int unicodeBomCharacterRune = 0xFEFF;
 ///     List<int> encoded = gbk.encode("¤§¨°±");
 ///     String decoded = gbk.decode([0xA1,0xE8,0xA1,0xEC,
 ///                                   0xA1,0xA7,0xA1,0xE3,0xA1,0xC0]);
-GbkCodec gbk = GbkCodec();
+GbkCodec gbk = const GbkCodec();
 
 /// A [GbkCodec] encodes strings to GBK code units (bytes) and decodes
 /// GBK code units to strings.
@@ -150,7 +152,6 @@ class _GbkStreamEncoder {
       } else {
         // unknown GBK code;
         _buffer[targetIndex++] = (replacementCharacterGBK >> 8) & 0xff;
-        ;
         _buffer[targetIndex++] = replacementCharacterGBK & 0xff;
       }
       srcIndex++;
